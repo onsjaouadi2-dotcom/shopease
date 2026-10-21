@@ -11,3 +11,14 @@ Mini-projet Node.js support des ateliers du module Test et validation de logicie
     docker run --rm -v "${PWD}:/app" -w /app node:22 sh -c "npm install && npm test"
 
 Rapports produits : `coverage/lcov.info` (couverture, lu par SonarQube) et `reports/junit.xml` (résultats).
+
+## Application de démonstration pour les tests manuels
+
+    # version corrigée (v1.1)
+    docker run --rm -p 3000:3000 -v "${PWD}:/app" -w /app node:22 node app/server.js
+    # version d'origine avec ses défauts (v1.0)
+    docker run --rm -p 3000:3000 -e VERSION=1.0 -v "${PWD}:/app" -w /app node:22 node app/server.js
+    # lien de réinitialisation valable 60 s (pour tester SHOP-39)
+    docker run --rm -p 3000:3000 -e RESET_TTL_SECONDS=60 -v "${PWD}:/app" -w /app node:22 node app/server.js
+
+Puis ouvrir http://localhost:3000. Compte de test (précondition SHOP-27) : client.test@shopease.tn / Test1234.

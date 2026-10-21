@@ -61,4 +61,4 @@ function register(name, email, password, callback) {
   });
 }
 
-module.exports = { login, register, isValidPassword, generateToken };
+module.exports = { login, register, isValidPassword, generateToken, hashPassword };
